@@ -2,14 +2,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const resultsContainer = document.getElementById('results');
 
-    // Funkcja do pobrania danych z pliku JSON
+    // pobieranie danych z json
     async function fetchData() {
         const response = await fetch('data.json');
         const data = await response.json();
         return data;
     }
 
-    // Funkcja do wyświetlania wyników
+    // funkcja do wyświetlania wyników
     function displayResults(results) {
         resultsContainer.innerHTML = '';
         if (results.length === 0) {
@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Funkcja do filtrowania danych na podstawie wpisanego tekstu
+    // funkcja do filtrowania danych na podstawie wpisanego tekstu
     function filterData(data, query) {
         return data.filter(item => item.kierunek.toLowerCase().includes(query.toLowerCase()));
     }
 
-    // Nasłuchiwanie na wpisywanie tekstu w polu wyszukiwania
+    // podpowiedzi
     searchInput.addEventListener('input', async function() {
         const query = searchInput.value.trim();
         if (query.length === 0) {
